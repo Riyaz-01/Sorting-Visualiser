@@ -11,7 +11,6 @@ header {
     color: white;
     background-color: #1a1a1d;
     padding: 20px;
-    height: 250px;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     grid-row-gap: 20px;
@@ -152,14 +151,13 @@ h1 {
 @media screen and (max-width: 820px) {
     header {
         grid-template-columns: 1fr;
-        grid-template-rows: 0.2fr 0.6fr 2fr;
+        grid-template-rows: 2/5fr 2/5fr 1/5fr;
         grid-template-areas:
             "top"
             "mid"
             "bottom";
         padding-bottom: 10px;
         grid-gap: 10px;
-        height: 230px;
         border-radius: 10px;
     }
     .algos {
