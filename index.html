@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Random-Pillars</title>
+        <link rel="stylesheet" href="style.css" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <header>
+            <section class="setSize">
+                <div class="sizeLabel">Set Array Size</div>
+                <div class=".changeSize">
+                    <span class="slider">
+                        <span class="limit">0</span>
+                        <input
+                            class="s"
+                            type="range"
+                            min="0"
+                            max="150"
+                            value="0"
+                        />
+                        <span class="limit">150</span>
+                    </span>
+                    <span class="sizeContainer">
+                        <span>=</span>
+                        <span class="size">0</span>
+                    </span>
+                </div>
+            </section>
+            <h1>Sorting Visualizer</h1>
+            <section class="setSpeed">
+                <div class="speedLabel">Set Algo Speed</div>
+                <div class=".changeSpeed">
+                    <span class="slider">
+                        <span class="limit">0</span>
+                        <input
+                            class="sd"
+                            type="range"
+                            min="0"
+                            max="5"
+                            value="0"
+                        />
+                        <span class="limit">5</span>
+                    </span>
+                    <span class="speedContainer">
+                        <span>=</span>
+                        <span class="size">0</span>
+                    </span>
+                </div>
+            </section>
+            <section class="algos">
+                <div class="quick algo">Quick Sort</div>
+                <div class="merge algo selectedAlgo">Merge Sort</div>
+                <div class="bubble algo">Bubble Sort</div>
+                <div class="selection algo">Selection Sort</div>
+            </section>
+            <div class="sortBtn">Sort</div>
+        </header>
+        <section class="pillarContainer">
+            <div class="vSize">
+                <input class="s" type="range" min="0" max="50" value="0" />
+                <div class="label">Size</div>
+            </div>
+            <div class="pillars">
+                <dev></dev>
+                <dev></dev>
+                <dev></dev>
+                <dev></dev>
+                <dev></dev>
+            </div>
+            <div class="vSpeed">
+                <div class="label">Speed</div>
+                <input class="sd" type="range" min="0" max="5" value="0" />
+            </div>
+        </section>
+        <script src="app.js"></script>
+    </body>
+</html>
