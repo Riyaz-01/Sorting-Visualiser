@@ -13,8 +13,9 @@
         />
     </head>
     <body>
+        <!-- Top Section -->
         <header>
-            <section class="setSize">
+            <section class="setSize h">
                 <div class="sizeLabel">Set Array Size</div>
                 <div class=".changeSize">
                     <span class="slider">
@@ -23,10 +24,10 @@
                             class="s"
                             type="range"
                             min="0"
-                            max="150"
+                            max="200"
                             value="0"
                         />
-                        <span class="limit">150</span>
+                        <span class="limit">200</span>
                     </span>
                     <span class="sizeContainer">
                         <span>=</span>
@@ -35,7 +36,7 @@
                 </div>
             </section>
             <h1>Sorting Visualizer</h1>
-            <section class="setSpeed">
+            <section class="setSpeed h">
                 <div class="speedLabel">Set Algo Speed</div>
                 <div class=".changeSpeed">
                     <span class="slider">
@@ -55,31 +56,58 @@
                     </span>
                 </div>
             </section>
+
+            <!-- Algo Section -->
             <section class="algos">
                 <div class="quick algo">Quick Sort</div>
                 <div class="merge algo selectedAlgo">Merge Sort</div>
                 <div class="bubble algo">Bubble Sort</div>
                 <div class="selection algo">Selection Sort</div>
             </section>
-            <div class="sortBtn">Sort</div>
+            <div class="sortBtn h">Sort</div>
         </header>
+
+        <!-- Pillars Section -->
         <section class="pillarContainer">
-            <div class="vSize">
-                <input class="s" type="range" min="0" max="50" value="0" />
-                <div class="label">Size</div>
-            </div>
-            <div class="pillars">
-                <dev></dev>
-                <dev></dev>
-                <dev></dev>
-                <dev></dev>
-                <dev></dev>
-            </div>
-            <div class="vSpeed">
-                <div class="label">Speed</div>
-                <input class="sd" type="range" min="0" max="5" value="0" />
-            </div>
+            <div class="pillars"></div>
         </section>
+
+        <!-- Bottom Section For Vertical View-->
+        <footer>
+            <section class="setSize v">
+                <div class="sizeLabel">Size</div>
+                <div class=".changeSize">
+                    <span class="slider">
+                        <span class="limit">0</span>
+                        <input
+                            class="s"
+                            type="range"
+                            min="0"
+                            max="70"
+                            value="0"
+                        />
+                        <span class="limit">70</span>
+                    </span>
+                </div>
+            </section>
+            <section class="setSpeed v">
+                <div class="speedLabel">Speed</div>
+                <div class=".changeSpeed">
+                    <span class="slider">
+                        <span class="limit">0</span>
+                        <input
+                            class="sd"
+                            type="range"
+                            min="0"
+                            max="5"
+                            value="0"
+                        />
+                        <span class="limit">5</span>
+                    </span>
+                </div>
+            </section>
+            <div class="sortBtn">Sort</div>
+        </footer>
         <script src="app.js"></script>
     </body>
 </html>

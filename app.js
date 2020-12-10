@@ -2,12 +2,14 @@
 let input=document.querySelectorAll('input');
 let sizeDisplay=document.querySelector('.size');
 let pillars=document.querySelector('.pillars')
+let pillarHeight=(window.innerHeight-(document.querySelector('header').offsetHeight+document.querySelector('footer').offsetHeight));
 let sortBtn=document.querySelector('.sortBtn');
 let algos=document.querySelectorAll('.algos div');
 let algo=null;
 let array=[];
 
 //funtions
+pillars.style.height=pillarHeight+'px';
 setAlgo=(i)=>{
     for(algo of algos){
         algo.classList.remove('selectedAlgo');
@@ -16,7 +18,7 @@ setAlgo=(i)=>{
     algo=i.target.classList[0];
 }
 createDiv=(i,pillarWidth)=>{
-    let h=Math.floor(Math.random()*415) +20;
+    let h=Math.floor(Math.random()*(pillarHeight-50)) +20;
     let pillar=document.createElement('div');
     
     pillar.style.width=pillarWidth+ 'px';
@@ -35,7 +37,7 @@ createArray=(size)=>{
     array=[];
     pillars.innerHTML='';           //removing previous pillars
     let s=size;
-    let pillarWidth=10*(((63/100)*window.innerWidth)/(size+2));
+    let pillarWidth=10*(((80/100)*window.innerWidth)/(size+2));
     if(pillarWidth>70)
         pillarWidth=70;
     while(s>0){
@@ -49,10 +51,14 @@ changeSize=(e)=>{
     createArray(size);
 }
 sort=()=>{
-    ;
+    switch(algo){
+        case 'merge':
+            mergeSort()
+            break;
+    }
 }
-//event listeners
 
+//Event listeners
 //selecting algos
 for(i of algos){
     i.addEventListener('click',setAlgo);

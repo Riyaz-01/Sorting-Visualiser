@@ -15,24 +15,6 @@ header {
     border-bottom-right-radius: 10px;
     grid-row-gap: 20px;
 }
-.sortBtn {
-    grid-column: 1/4;
-    display: inline-block;
-    background: #6f2233;
-    width: 60%;
-    text-align: center;
-    align-self: center;
-    margin: 0 auto;
-    padding: 6px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 20px;
-    letter-spacing: 3px;
-    font-weight: 600;
-}
-.sortBtn:hover {
-    background: #52202b;
-}
 h1 {
     font-size: 40px;
     font-weight: 600;
@@ -64,9 +46,25 @@ h1 {
     padding: 5px;
     height: 30px;
 }
-.slider input {
+input {
+    -webkit-appearance: none;
     width: 120px;
     cursor: pointer;
+    outline: none;
+}
+input::-webkit-slider-runnable-track {
+    height: 3px;
+    background: #1e1e1d;
+    border: none;
+}
+input::-webkit-slider-thumb {
+    position: relative;
+    bottom: 3px;
+    -webkit-appearance: none;
+    height: 10px;
+    width: 17px;
+    background: #1e1e1d;
+    border-radius: 4px;
 }
 .limit {
     font-size: 15px;
@@ -100,32 +98,29 @@ h1 {
 .selectedAlgo {
     background: white;
     color: #4e4e50;
-    transform: scale(1.05);
+    transform: scale(1.1);
+}
+.sortBtn {
+    grid-column: 1/4;
+    display: inline-block;
+    background: #6f2233;
+    width: 75%;
+    text-align: center;
+    align-self: center;
+    margin: 0 auto;
+    padding: 6px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    letter-spacing: 3px;
+    font-weight: 600;
+}
+.sortBtn:hover {
+    background: #52202b;
 }
 .pillarContainer {
     display: flex;
     justify-content: center;
-    align-items: center;
-}
-.vSize,
-.vSpeed {
-    display: none;
-    background: #c3073f;
-    writing-mode: vertical-rl;
-    text-orientation: upright;
-    width: auto;
-    align-self: center;
-    text-align: center;
-    padding: 10px;
-    border-radius: 10px;
-    font-weight: 600;
-    color: white;
-    width: 55px;
-}
-.vSize input,
-.vSpeed input {
-    -webkit-appearance: slider-vertical;
-    width: 10%;
 }
 .pillars {
     display: flex;
@@ -136,7 +131,6 @@ h1 {
     border-radius: 0 0 5px 5px;
     border: 1px solid white;
     border-top: none;
-    text-align: center;
     min-width: 3px;
     max-width: 70px;
 }
@@ -145,53 +139,56 @@ h1 {
     top: 100%;
     display: inline-block;
     width: 100%;
-    font-size: auto;
+    text-align: center;
 }
-
+footer {
+    display: none;
+    grid-template-columns: 1fr 1fr;
+    background-color: #1e1e1d;
+    padding: 15px;
+    grid-gap: 15px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    color: white;
+}
+.v {
+    font-size: 20px;
+    padding: 10px;
+}
 @media screen and (max-width: 820px) {
+    .h {
+        display: none;
+    }
     header {
         grid-template-columns: 1fr;
-        grid-template-rows: 2/5fr 2/5fr 1/5fr;
+        grid-template-rows: 2fr 2fr;
         grid-template-areas:
             "top"
-            "mid"
-            "bottom";
-        padding-bottom: 10px;
-        grid-gap: 10px;
-        border-radius: 10px;
+            "mid";
+        padding-bottom: 15px;
+        grid-gap: 15px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
     }
     .algos {
         grid-area: mid;
         grid-template-columns: 1fr 1fr;
-        grid-gap: 10px;
+        grid-gap: 15px;
     }
     h1 {
         grid-area: top;
         font-size: 35px;
     }
-    .sortBtn {
-        grid-area: bottom;
-    }
-    .setSize,
-    .setSpeed {
-        display: none;
-    }
-    .vSize,
-    .vSpeed {
-        display: inline-block;
-    }
-    .pillarContainer {
+    footer {
         display: grid;
-        grid-template-columns: 0.1fr 1fr 0.1fr;
-        grid-template-rows: 1fr;
-        height: 450px;
-        grid-gap: 5px;
-        align-items: baseline;
     }
-    .pillars {
-        width: 100%;
+    input {
+        width: 100px;
     }
-    .pillars div {
-        min-width: 5px;
+    .slider {
+        height: 20px;
+    }
+    .sortBtn {
+        grid-column: 1/3;
     }
 }
