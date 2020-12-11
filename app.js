@@ -1,11 +1,13 @@
 //variables
 let input=document.querySelectorAll('input');
-let sizeDisplay=document.querySelector('.size');
-let pillars=document.querySelector('.pillars')
-let pillarHeight=(window.innerHeight-(document.querySelector('header').offsetHeight+document.querySelector('footer').offsetHeight));
+let pillars=document.querySelector('.pillars');
 let sortBtn=document.querySelector('.sortBtn');
 let algos=document.querySelectorAll('.algos div');
+let pillarHeight=(window.innerHeight-(document.querySelector('header').offsetHeight+document.querySelector('footer').offsetHeight));
+if(pillarHeight<250)
+    pillarHeight=250;
 let algo=null;
+let size=0;
 let array=[];
 
 //funtions
@@ -18,7 +20,7 @@ setAlgo=(i)=>{
     algo=i.target.classList[0];
 }
 createDiv=(i,pillarWidth)=>{
-    let h=Math.floor(Math.random()*(pillarHeight-50)) +20;
+    let h=Math.floor(Math.random()*(pillarHeight-55)) +20;
     let pillar=document.createElement('div');
     
     pillar.style.width=pillarWidth+ 'px';
@@ -46,9 +48,15 @@ createArray=(size)=>{
     }
 }
 changeSize=(e)=>{
-    let size=e.target.value;
+    let sizeDisplay=document.querySelector('.size');
+    size=e.target.value;
     sizeDisplay.innerHTML=size;
     createArray(size);
+}
+changeSpeed=(e)=>{
+    let speedDisplay=document.querySelector('.speed')
+    let speed=e.target.value;
+    speedDisplay.innerHTML=speed;
 }
 sort=()=>{
     switch(algo){
@@ -65,10 +73,10 @@ for(i of algos){
 }
 //changing size of the array
 for(e of input){
-        if(e.classList.contains('s'))
+    if(e.classList.contains('s'))
         e.addEventListener('input',changeSize);
-    // else
-    //    e.addEventListener('input',changeSpeed);
+    else
+        e.addEventListener('input',changeSpeed);
 }
 //initiating sort
 sortBtn.addEventListener('click',sort);
