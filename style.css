@@ -54,16 +54,17 @@ input {
     outline: none;
 }
 input::-webkit-slider-runnable-track {
-    height: 3px;
+    height: 4px;
+    border-radius: 2px;
     background: #2f2626;
     border: none;
 }
 input::-webkit-slider-thumb {
     position: relative;
-    bottom: 4px;
+    bottom: 6px;
     -webkit-appearance: none;
-    height: 11px;
-    width: 17px;
+    height: 17px;
+    width: 10px;
     background: #1a1a1d;
     border-radius: 4px;
 }
@@ -86,7 +87,7 @@ input::-webkit-slider-thumb {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap: 30px;
 }
-.algo {
+.algos div {
     border-radius: 10px;
     align-self: center;
     text-align: center;
@@ -95,7 +96,6 @@ input::-webkit-slider-thumb {
     letter-spacing: 2px;
     cursor: pointer;
     transition: all 0.1s;
-    /* background: #4e4e50; */
 }
 .selectedAlgo {
     background: #cf003e;
@@ -118,7 +118,7 @@ input::-webkit-slider-thumb {
     transition: all 0.1s;
 }
 .sortBtn:hover {
-    transform: scale(1.05);
+    transform: translateY(-7%);
 }
 .pillarContainer {
     color: #1a1a1d;
@@ -159,7 +159,8 @@ footer {
     font-size: 20px;
     padding: 10px;
 }
-@media screen and (max-width: 890px) {
+
+@media screen and (max-width: 860px) {
     .h {
         display: none;
     }

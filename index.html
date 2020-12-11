@@ -24,10 +24,10 @@
                             class="s"
                             type="range"
                             min="0"
-                            max="200"
+                            max="250"
                             value="0"
                         />
-                        <span class="limit">200</span>
+                        <span class="limit">250</span>
                     </span>
                     <span class="sizeContainer">
                         <span>=</span>
@@ -40,29 +40,29 @@
                 <div class="speedLabel">Set Algo Speed</div>
                 <div class=".changeSpeed">
                     <span class="slider">
-                        <span class="limit">0</span>
+                        <span class="limit">1</span>
                         <input
                             class="sd"
                             type="range"
-                            min="0"
+                            min="1"
                             max="5"
-                            value="0"
+                            value="1"
                         />
                         <span class="limit">5</span>
                     </span>
                     <span class="speedContainer">
                         <span>=</span>
-                        <span class="speed">0</span>
+                        <span class="speed">1</span>
                     </span>
                 </div>
             </section>
 
             <!-- Algo Section -->
             <section class="algos">
-                <div class="quick algo">Quick Sort</div>
-                <div class="merge algo selectedAlgo">Merge Sort</div>
-                <div class="bubble algo">Bubble Sort</div>
-                <div class="selection algo">Selection Sort</div>
+                <div class="quick">Quick Sort</div>
+                <div class="merge selectedAlgo">Merge Sort</div>
+                <div class="bubble">Bubble Sort</div>
+                <div class="selection">Selection Sort</div>
             </section>
             <div class="sortBtn h">Sort</div>
         </header>
@@ -94,13 +94,13 @@
                 <div class="speedLabel">Speed</div>
                 <div class=".changeSpeed">
                     <span class="slider">
-                        <span class="limit">0</span>
+                        <span class="limit">1</span>
                         <input
                             class="sd"
                             type="range"
-                            min="0"
+                            min="1"
                             max="5"
-                            value="0"
+                            value="1"
                         />
                         <span class="limit">5</span>
                     </span>
@@ -108,6 +108,9 @@
             </section>
             <div class="sortBtn">Sort</div>
         </footer>
-        <script src="app.js"></script>
+        <!-- JavaScript Files -->
+        <script src="script/app.js"></script>
+        <script src="script/mergeSort.js"></script>
+        <script src="script/visualisations.js"></script>
     </body>
 </html>
