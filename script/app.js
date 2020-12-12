@@ -1,24 +1,29 @@
-//variables
+
+/* VARIABLES */
+
 let input = document.querySelectorAll('input');
+//since there are 2 different sort buttons for different sizes this has to be an array 
+let sBtns = document.querySelectorAll('.sortBtn');
+//array containing all algo buttons
+let algos = document.querySelectorAll('.algos button');
 let pillars = document.querySelector('.pillars');
-let sortBtn = document.querySelectorAll('.sortBtn');
-let algos = document.querySelectorAll('.algos div');
-
-
+//this is max pillar height
 let pillarHeight = (window.innerHeight - (document.querySelector('header').offsetHeight + document.querySelector('footer').offsetHeight));
-if (pillarHeight < 330)
+if (pillarHeight < 400)
     pillarHeight = 400;
+pillars.style.height = pillarHeight + 'px';
+
+//defualt values
 let algo = 'merge';
 let size = 0, speed = 1;
 let array = [];
-let running = false
+//this variable is required for resume() to work
+let prevState = 'running';
 
 
-//funtions
-pillars.style.height = pillarHeight + 'px';
+//FUNTIONS
+
 setAlgo = (i) => {
-    if (running)
-        return;
     for (algo of algos) {
         algo.classList.remove('selectedAlgo');
     }
@@ -54,40 +59,63 @@ createArray = (size) => {
         pillars.appendChild(createDiv(size - s, pillarWidth));
         --s;
     }
+    totalVisual = 0;
+    comVisual = 0;
 }
 changeSize = (e) => {
     let sizeDisplay = document.querySelector('.size');
     size = e.target.value;
     sizeDisplay.innerHTML = size;
-    if (running)
-        return;
+    prevState = 'running';
+    sBtns.forEach((btn) => {
+        btn.innerHTML = 'Sort';
+    })
     createArray(size);
 }
 changeSpeed = (e) => {
     let speedDisplay = document.querySelector('.speed')
     speed = e.target.value;
     speedDisplay.innerHTML = speed;
-    if (running)
-        return;
+    sBtns.forEach((btn) => {
+        btn.innerHTML = 'Sort';
+    })
+    prevState = 'running';
     createArray(size);
 }
 sort = () => {
-    if (running)
-        return;
+    //disabling all the buttons during sorting
     disable();
-    let pillarArray = document.querySelectorAll('.pillar');
+    //overriding previous visualisations delay time
     delay = 0;
     visualSpeed = 10000 / (10 ** speed);
+    totalVisual = 0;
+    let pillarArray = document.querySelectorAll('.pillar');
     switch (algo) {
         case 'merge':
             mergeSort(pillarArray);
             break;
     }
-    visualSpeed = 1000;
+    prevState = 'running';
+}
+pause = () => {
+    prevState = 'running';
+    sBtns.forEach((btn) => {
+        btn.innerHTML = "Resume";
+    })
+    pauseVisuals();
     enable();
 }
 
-//Event listeners
+resume = () => {
+    prevState = 'paused';
+    let pillarArray = document.querySelectorAll('.pillar');
+    for (let i = 0; i < size; ++i)
+        array[i] = Number(pillarArray[i].offsetHeight);
+    sort();
+}
+
+
+//EVENT LISTENERS
 
 //selecting algos
 for (e of algos) {
@@ -102,7 +130,9 @@ for (e of input) {
         e.addEventListener('input', changeSpeed);
 }
 
-//initiating sort
-for (e of sortBtn) {
-    e.addEventListener('click', sort);
+//initiating sort/resume/pause
+for (btn of sBtns) {
+    btn.addEventListener('click', (e) => {
+        e.target.innerHTML === "Pause" ? pause() : e.target.innerHTML === 'Resume' ? resume() : sort();
+    });
 }
