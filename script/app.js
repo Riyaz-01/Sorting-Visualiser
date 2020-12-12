@@ -76,13 +76,15 @@ changeSpeed = (e) => {
     let speedDisplay = document.querySelector('.speed')
     speed = e.target.value;
     speedDisplay.innerHTML = speed;
-    sBtns.forEach((btn) => {
-        btn.innerHTML = 'Sort';
-    })
-    prevState = 'running';
-    createArray(size);
+
+    // sBtns.forEach((btn) => {
+    //     btn.innerHTML = 'Sort';
+    // })
+    prevState = 'paused';
 }
 sort = () => {
+    if (size == 0)
+        return;
     //disabling all the buttons during sorting
     disable();
     //overriding previous visualisations delay time

@@ -138,7 +138,7 @@ input::-webkit-slider-thumb {
 }
 .pillars div {
     background-color: #1a1a1d;
-    border-radius: 0 0 5px 5px;
+    border-radius: 0 0 4px 4px;
     border: 1px solid white;
     border-top: none;
     min-width: 3px;
@@ -170,6 +170,14 @@ footer {
 @media screen and (max-width: 860px) {
     .h {
         display: none;
+    }
+    .pillarContainer {
+        transform: rotate(180deg);
+        transform: scaleY(-1);
+    }
+    .pillar span {
+        transform: rotate(-180deg);
+        transform: scaleY(-1);
     }
     header {
         grid-template-columns: 1fr;

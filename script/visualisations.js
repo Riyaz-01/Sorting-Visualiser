@@ -12,10 +12,15 @@ these variabled are key to proper working of resume() funtion*/
 updatePillar = (pillar, height, color) => {
     totalVisual++;
     if ((prevState == 'paused' && totalVisual > comVisual) || prevState == 'running') {
-        stopVars[totalVisual] = window.setTimeout(function () {
+        stopVars[totalVisual] = window.setTimeout(() => {
             pillar.style.height = height + 'px';
             pillar.style.background = color;
             pillar.querySelector('span').innerHTML = height;
+            if (color != 'green') {
+                window.setTimeout(() => {
+                    pillar.style.background = 'black';
+                }, visualSpeed * 1.5);
+            }
             comVisual++;
             if (totalVisual == comVisual) {
                 enable();

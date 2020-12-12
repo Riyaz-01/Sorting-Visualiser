@@ -25,7 +25,7 @@ merge = (pillarArray, l, m, r) => {
     }
     for (let x = 0; x < k; ++x) {
         array[l++] = temp[x];
-        updatePillar(pillarArray[l - 1], array[l - 1], 'darkgreen');
+        updatePillar(pillarArray[l - 1], array[l - 1], 'green');
     }
 }
 partition = (pillarArray, l, r) => {
@@ -33,7 +33,7 @@ partition = (pillarArray, l, r) => {
         return;
     }
     let mid = Math.floor((l + r) / 2);
-    updatePillar(pillarArray[mid], array[mid], 'orange');
+    updatePillar(pillarArray[mid], array[mid], 'red');
 
     partition(pillarArray, l, mid);
     partition(pillarArray, mid + 1, r);
