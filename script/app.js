@@ -9,7 +9,7 @@ let algos = document.querySelectorAll('.algos button');
 let pillars = document.querySelector('.pillars');
 //this is max pillar height
 let pillarHeight = (window.innerHeight - (document.querySelector('header').offsetHeight + document.querySelector('footer').offsetHeight));
-if (pillarHeight < 400)
+if (pillarHeight < 350)
     pillarHeight = 400;
 pillars.style.height = pillarHeight + 'px';
 
