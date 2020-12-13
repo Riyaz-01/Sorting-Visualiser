@@ -8,22 +8,30 @@ let sBtns = document.querySelectorAll('.sortBtn');
 let algos = document.querySelectorAll('.algos button');
 let pillars = document.querySelector('.pillars');
 //this is max pillar height
-let pillarHeight = (window.innerHeight - (document.querySelector('header').offsetHeight + document.querySelector('footer').offsetHeight));
-if (pillarHeight < 350)
-    pillarHeight = 400;
-pillars.style.height = pillarHeight + 'px';
+let pillarsHeight = (window.innerHeight - (document.querySelector('header').offsetHeight + document.querySelector('footer').offsetHeight));
+if (pillarsHeight < 350)
+    pillarsHeight = 400;
+pillars.style.height = pillarsHeight + 'px';
 
 //defualt values
-let algo = 'merge';
-let size = 0, speed = 1;
+let algo = 'quick';
+let size = 20, speed = 3;
 let array = [];
-//this variable is required for resume() to work
-let prevState = 'running';
 
 
 //FUNTIONS
-
+window.onload = () => {
+    createArray();
+};
+defaultColor = () => {
+    let pillarArray = document.querySelectorAll('.pillar');
+    for (let i = 0; i < size; ++i) {
+        array[i] = pillarArray[i].offsetHeight;
+        pillarArray[i].style.background = "#1a1a1d";
+    }
+}
 setAlgo = (i) => {
+    defaultColor();
     for (algo of algos) {
         algo.classList.remove('selectedAlgo');
     }
@@ -31,7 +39,7 @@ setAlgo = (i) => {
     algo = i.target.classList[0];
 }
 createDiv = (i, pillarWidth) => {
-    let h = Math.floor(Math.random() * (pillarHeight - 55)) + 20;
+    let h = Math.floor(Math.random() * (pillarsHeight - 55)) + 20;
     let pillar = document.createElement('div');
 
     pillar.style.width = pillarWidth + 'px';
@@ -48,19 +56,17 @@ createDiv = (i, pillarWidth) => {
     pillar.classList.add('pillar');
     return pillar;
 }
-createArray = (size) => {
+createArray = () => {
     array = [];
     pillars.innerHTML = '';           //removing previous pillars
     let s = size;
-    let pillarWidth = 10 * (((80 / 100) * window.innerWidth) / (size + 2));
+    let pillarWidth = ((80 / 100) * window.innerWidth) / (Number(s) + 2);
     if (pillarWidth > 70)
         pillarWidth = 70;
     while (s > 0) {
         pillars.appendChild(createDiv(size - s, pillarWidth));
         --s;
     }
-    totalVisual = 0;
-    comVisual = 0;
 }
 changeSize = (e) => {
     let sizeDisplay = document.querySelector('.size');
@@ -73,16 +79,13 @@ changeSize = (e) => {
     createArray(size);
 }
 changeSpeed = (e) => {
+    defaultColor();
     let speedDisplay = document.querySelector('.speed')
     speed = e.target.value;
     speedDisplay.innerHTML = speed;
-
-    // sBtns.forEach((btn) => {
-    //     btn.innerHTML = 'Sort';
-    // })
-    prevState = 'paused';
 }
 sort = () => {
+    defaultColor();
     if (size == 0)
         return;
     //disabling all the buttons during sorting
@@ -90,33 +93,32 @@ sort = () => {
     //overriding previous visualisations delay time
     delay = 0;
     visualSpeed = 10000 / (10 ** speed);
-    totalVisual = 0;
+    vNum = 0;
+    stopVars = [];
     let pillarArray = document.querySelectorAll('.pillar');
     switch (algo) {
         case 'merge':
             mergeSort(pillarArray);
             break;
+        case 'bubble':
+            bubbleSort(pillarArray);
+            break;
+        case 'selection':
+            selectionSort(pillarArray);
+            break;
+        case 'quick':
+            quickSort(pillarArray);
+            break;
+        default: alert('No Algo Selected');
     }
-    prevState = 'running';
-}
-pause = () => {
-    prevState = 'running';
-    sBtns.forEach((btn) => {
-        btn.innerHTML = "Resume";
-    })
-    pauseVisuals();
-    enable();
+    enable(delay, pillarArray);
 }
 
-resume = () => {
-    prevState = 'paused';
-    let pillarArray = document.querySelectorAll('.pillar');
-    for (let i = 0; i < size; ++i)
-        array[i] = Number(pillarArray[i].offsetHeight);
-    sort();
+stop = () => {
+    stopVisuals();
+    enable(0);
+    defaultColor();
 }
-
-
 //EVENT LISTENERS
 
 //selecting algos
@@ -134,7 +136,7 @@ for (e of input) {
 
 //initiating sort/resume/pause
 for (btn of sBtns) {
-    btn.addEventListener('click', (e) => {
-        e.target.innerHTML === "Pause" ? pause() : e.target.innerHTML === 'Resume' ? resume() : sort();
+    btn.addEventListener('click', () => {
+        btn.innerHTML == 'Sort' ? sort() : stop();
     });
 }

@@ -1,49 +1,26 @@
 let visualSpeed, delay;
 let sliders = document.querySelectorAll('.slider');
-let stopVars = [], totalVisual, comVisual = 0;
-
-/*totalVisual keeps track of number of times updatePillar funtion is called after resume 
-
-comVisual keeps track of number of times a pillar was updated
-
-these variabled are key to proper working of resume() funtion*/
-
+let stopVars = [], vNum = 0
 
 updatePillar = (pillar, height, color) => {
-    totalVisual++;
-    if ((prevState == 'paused' && totalVisual > comVisual) || prevState == 'running') {
-        stopVars[totalVisual] = window.setTimeout(() => {
-            pillar.style.height = height + 'px';
-            pillar.style.background = color;
-            pillar.querySelector('span').innerHTML = height;
-            if (color != 'green') {
-                window.setTimeout(() => {
-                    pillar.style.background = 'black';
-                }, visualSpeed * 1.5);
-            }
-            comVisual++;
-            if (totalVisual == comVisual) {
-                enable();
-                comVisual = 0;
-                sBtns.forEach((btn) => {
-                    btn.innerHTML = 'Sort';
-                }
-                )
-            }
-        }, delay);
-        delay = delay + visualSpeed;
-    }
+    stopVars[vNum++] = window.setTimeout(() => {
+        pillar.style.height = height + 'px';
+        pillar.style.background = color;
+        pillar.querySelector('span').innerHTML = height;
+    }, delay);
+    delay = delay + visualSpeed;
 }
 
-pauseVisuals = () => {
+stopVisuals = () => {
     stopVars.forEach((stopVar) => {
         window.clearTimeout(stopVar);
     })
+    defaultColor();
 }
 
 disable = () => {
     sBtns.forEach((btn) => {
-        btn.innerHTML = "Pause";
+        btn.innerHTML = 'Stop';
     })
     for (i of input) {
         i.parentElement.style.background = 'darkgrey';
@@ -56,19 +33,28 @@ disable = () => {
         a.disabled = true;
     }
 }
-
-enable = () => {
-    for (i of input) {
-        i.parentElement.style.background = 'white';
-        i.disabled = false;
+allGreen = (pillarArray) => {
+    for (let i = 0; i < size; ++i) {
+        if (pillarArray[i].style.background != 'green')
+            return false;
     }
-    for (a of algos) {
-        if (!a.classList.contains('selectedAlgo'))
-            a.style.color = 'white';
-        a.disabled = false;
-    }
-    sBtns.forEach((btn) => {
-        if (prevState == 'running')
-            btn.innerHTML = "Resume";
-    })
+    return true;
+}
+enable = (Edelay, pillarArray) => {
+    window.setTimeout(() => {
+        if (Edelay != 0 && !allGreen(pillarArray))
+            return;
+        sBtns.forEach((btn) => {
+            btn.innerHTML = 'Sort';
+        })
+        for (i of input) {
+            i.parentElement.style.background = 'white';
+            i.disabled = false;
+        }
+        for (a of algos) {
+            if (!a.classList.contains('selectedAlgo'))
+                a.style.color = 'white';
+            a.disabled = false;
+        }
+    }, Edelay);
 }

@@ -28,19 +28,19 @@ merge = (pillarArray, l, m, r) => {
         updatePillar(pillarArray[l - 1], array[l - 1], 'green');
     }
 }
-partition = (pillarArray, l, r) => {
+mergePartition = (pillarArray, l, r) => {
     if (l >= r) {
         return;
     }
     let mid = Math.floor((l + r) / 2);
-    updatePillar(pillarArray[mid], array[mid], 'red');
+    updatePillar(pillarArray[mid], array[mid], 'yellow');
 
-    partition(pillarArray, l, mid);
-    partition(pillarArray, mid + 1, r);
+    mergePartition(pillarArray, l, mid);
+    mergePartition(pillarArray, mid + 1, r);
 
     merge(pillarArray, l, mid, r);
 }
 
 mergeSort = (pillarArray) => {
-    partition(pillarArray, 0, size - 1);
+    mergePartition(pillarArray, 0, size - 1);
 }
