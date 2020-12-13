@@ -1,6 +1,6 @@
 let visualSpeed, delay;
 let sliders = document.querySelectorAll('.slider');
-let stopVars = [], vNum = 0
+let stopVars = [], timerVar, vNum = 0;
 
 updatePillar = (pillar, height, color) => {
     stopVars[vNum++] = window.setTimeout(() => {
@@ -10,17 +10,33 @@ updatePillar = (pillar, height, color) => {
     }, delay);
     delay = delay + visualSpeed;
 }
-
+timerStart = () => {
+    timerVar = window.setInterval(() => {
+        mili.innerHTML = Number(mili.innerHTML) + 1;
+        if (mili.innerHTML == 1000) {
+            mili.innerHTML = 0;
+            sec.innerHTML = Number(sec.innerHTML) + 1;
+        }
+    }, 1);
+}
+stopTimer = () => {
+    window.clearInterval(timerVar);
+}
 stopVisuals = () => {
     stopVars.forEach((stopVar) => {
         window.clearTimeout(stopVar);
     })
+    stopTimer();
     defaultColor();
 }
 
 disable = () => {
     sBtns.forEach((btn) => {
         btn.innerHTML = 'Stop';
+    })
+    gBtns.forEach((btn) => {
+        btn.style.color = 'darkgrey';
+        btn.disabled = true;
     })
     for (i of input) {
         i.parentElement.style.background = 'darkgrey';
@@ -32,6 +48,7 @@ disable = () => {
         }
         a.disabled = true;
     }
+
 }
 allGreen = (pillarArray) => {
     for (let i = 0; i < size; ++i) {
@@ -47,6 +64,10 @@ enable = (Edelay, pillarArray) => {
         sBtns.forEach((btn) => {
             btn.innerHTML = 'Sort';
         })
+        gBtns.forEach((btn) => {
+            btn.style.color = 'white';
+            btn.disabled = false;
+        })
         for (i of input) {
             i.parentElement.style.background = 'white';
             i.disabled = false;
@@ -56,5 +77,6 @@ enable = (Edelay, pillarArray) => {
                 a.style.color = 'white';
             a.disabled = false;
         }
+        stopTimer();
     }, Edelay);
 }

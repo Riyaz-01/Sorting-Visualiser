@@ -2,8 +2,11 @@
 /* VARIABLES */
 
 let input = document.querySelectorAll('input');
-//since there are 2 different sort buttons for different sizes this has to be an array 
+//since there are 2 different sort buttons and generate buttons for different sizes this has to be an array 
 let sBtns = document.querySelectorAll('.sortBtn');
+let gBtns = document.querySelectorAll('.generate');
+let sec = document.querySelector('.sec');
+let mili = document.querySelector('.mili');
 //array containing all algo buttons
 let algos = document.querySelectorAll('.algos button');
 let pillars = document.querySelector('.pillars');
@@ -88,6 +91,10 @@ sort = () => {
     defaultColor();
     if (size == 0)
         return;
+    //Starting timer
+    mili.innerHTML = 0;
+    sec.innerHTML = 0;
+    timerStart();
     //disabling all the buttons during sorting
     disable();
     //overriding previous visualisations delay time
@@ -140,3 +147,8 @@ for (btn of sBtns) {
         btn.innerHTML == 'Sort' ? sort() : stop();
     });
 }
+
+//Generate botton
+gBtns.forEach((btn) => {
+    btn.addEventListener('click', createArray);
+})

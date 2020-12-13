@@ -29,8 +29,6 @@ quickPartition = (pillarArray, l, r) => {
     array[r] = temp;
     updatePillar(pillarArray[r], array[r], 'green');
     updatePillar(pillarArray[i], array[i], 'green');
-    // for (let k = l; k < i; ++k)
-    //     updatePillar(pillarArray[k], array[k], 'green');
 
     return i;
 }
