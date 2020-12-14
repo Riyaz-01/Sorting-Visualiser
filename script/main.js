@@ -26,13 +26,6 @@ let array = [];
 window.onload = () => {
     createArray();
 };
-defaultColor = () => {
-    let pillarArray = document.querySelectorAll('.pillar');
-    for (let i = 0; i < size; ++i) {
-        array[i] = pillarArray[i].offsetHeight;
-        pillarArray[i].style.background = "#1a1a1d";
-    }
-}
 setAlgo = (i) => {
     defaultColor();
     for (algo of algos) {
@@ -42,7 +35,7 @@ setAlgo = (i) => {
     algo = i.target.classList[0];
 }
 createDiv = (i, pillarWidth) => {
-    let h = Math.floor(Math.random() * (pillarsHeight - 55)) + 20;
+    let h = Math.floor(Math.random() * (pillarsHeight - 40)) + 20;
     let pillar = document.createElement('div');
 
     pillar.style.width = pillarWidth + 'px';
@@ -53,7 +46,7 @@ createDiv = (i, pillarWidth) => {
     // Creating Size Label
     let heightLabel = document.createElement('span');
     heightLabel.innerHTML = h;
-    heightLabel.style.fontSize = (pillarWidth / 2) + 'px';
+    heightLabel.style.fontSize = (pillarWidth / 2) > 20 ? 20 + 'px' : (pillarWidth / 2) + 'px';
     pillar.appendChild(heightLabel);
 
     pillar.classList.add('pillar');
@@ -91,10 +84,6 @@ sort = () => {
     defaultColor();
     if (size == 0)
         return;
-    //Starting timer
-    mili.innerHTML = 0;
-    sec.innerHTML = 0;
-    timerStart();
     //disabling all the buttons during sorting
     disable();
     //overriding previous visualisations delay time
@@ -103,6 +92,10 @@ sort = () => {
     vNum = 0;
     stopVars = [];
     let pillarArray = document.querySelectorAll('.pillar');
+    //Starting timer
+    mili.innerHTML = 0;
+    sec.innerHTML = 0;
+    timerStart();
     switch (algo) {
         case 'merge':
             mergeSort(pillarArray);
@@ -115,6 +108,12 @@ sort = () => {
             break;
         case 'quick':
             quickSort(pillarArray);
+            break;
+        case 'radix':
+            radixSort(pillarArray);
+            break;
+        case 'heap':
+            heapSort(pillarArray);
             break;
         default: alert('No Algo Selected');
     }

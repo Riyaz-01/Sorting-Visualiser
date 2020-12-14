@@ -21,6 +21,11 @@ merge = (pillarArray, l, m, r) => {
             temp[k] = array[j++];
             updatePillar(pillarArray[j - 1], array[j - 1], 'red');
         }
+        if (i != l)
+            updatePillar(pillarArray[i - 1], array[i - 1], '#1a1a1d');
+        if (j != m + 1)
+            updatePillar(pillarArray[j - 1], array[j - 1], '#1a1a1d');
+
         ++k;
     }
     for (let x = 0; x < k; ++x) {

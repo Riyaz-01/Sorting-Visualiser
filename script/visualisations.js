@@ -10,14 +10,34 @@ updatePillar = (pillar, height, color) => {
     }, delay);
     delay = delay + visualSpeed;
 }
+defaultColor = () => {
+    let pillarArray = document.querySelectorAll('.pillar');
+    for (let i = 0; i < size; ++i) {
+        array[i] = pillarArray[i].offsetHeight;
+        pillarArray[i].style.background = "#1a1a1d";
+    }
+}
 timerStart = () => {
-    timerVar = window.setInterval(() => {
-        mili.innerHTML = Number(mili.innerHTML) + 1;
-        if (mili.innerHTML == 1000) {
-            mili.innerHTML = 0;
-            sec.innerHTML = Number(sec.innerHTML) + 1;
-        }
-    }, 1);
+    let timerDelay = 0;
+    if (size > 30 && (algo == 'bubble' || algo == 'selection')) {
+        timerDelay = 50;
+        mili.innerHTML = timerDelay;
+    }
+    window.setTimeout(() => {
+
+        timerVar = window.setInterval(() => {
+            mili.innerHTML = Number(mili.innerHTML) + 1;
+            if (mili.innerHTML == 1000) {
+                mili.innerHTML = 0;
+                sec.innerHTML = Number(sec.innerHTML) + 1;
+            }
+            if (mili.innerHTML < 10)
+                mili.innerHTML = '00' + mili.innerHTML;
+            else if (mili.innerHTML < 100)
+                mili.innerHTML = '0' + mili.innerHTML;
+
+        }, 1);
+    }, timerDelay);
 }
 stopTimer = () => {
     window.clearInterval(timerVar);

@@ -1,13 +1,13 @@
 selectionSort = (pillarArray) => {
-    for (var i = 0; i < size; ++i) {
+    let i, j;
+    for (i = 0; i < size; ++i) {
         let minI = i, min = array[i];
-        for (var j = i + 1; j < size; ++j) {
+        for (j = i + 1; j < size; ++j) {
             updatePillar(pillarArray[j], array[j], 'yellow')
             if (array[j] < min) {
                 updatePillar(pillarArray[minI], array[minI], '#1a1a1d');
                 min = array[j];
                 minI = j;
-                updatePillar(pillarArray[minI], array[minI], 'purple');
             }
             else
                 updatePillar(pillarArray[j], array[j], '#1a1a1d');

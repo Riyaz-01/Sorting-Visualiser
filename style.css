@@ -82,7 +82,7 @@ input::-webkit-slider-thumb {
     position: relative;
     top: 5px;
     display: inline-block;
-    width: 40px;
+    width: 50px;
     font-weight: 600;
 }
 .algos {
@@ -138,11 +138,13 @@ input::-webkit-slider-thumb {
 }
 .info {
     width: 90%;
-    background: rgb(58, 58, 58);
     font-size: 18px;
     cursor: unset;
 }
-
+.timer {
+    display: inline-block;
+    width: 75px;
+}
 .pillarContainer {
     color: #1a1a1d;
     display: flex;
@@ -202,7 +204,7 @@ footer {
     }
     header {
         grid-template-columns: 1fr;
-        grid-template-rows: 2fr 2fr 1fr;
+        grid-template-rows: 1.5fr 2fr 1fr;
         grid-template-areas:
             "top"
             "mid";
@@ -221,7 +223,7 @@ footer {
     }
     h1 {
         grid-area: top;
-        font-size: 35px;
+        font-size: 30px;
     }
     footer {
         display: grid;
@@ -236,5 +238,8 @@ footer {
     .generate {
         width: 100%;
         font-size: 15px;
+    }
+    .info {
+        background: rgb(58, 58, 58);
     }
 }
