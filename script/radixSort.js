@@ -35,6 +35,7 @@ counter = (pillarArray, exp) => {
     cjs.forEach((j) => {
         updatePillar(pillarArray[j - 1], array[j - 1], 'red');
         array[j - 1] = output[j];
+        updatePillar(pillarArray[j - 1], array[j - 1], 'red');
         updatePillar(pillarArray[j - 1], array[j - 1], m < exp * 10 ? 'green' : '#1a1a1d');
     });
 }
