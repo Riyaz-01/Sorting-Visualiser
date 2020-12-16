@@ -22,22 +22,25 @@ quickPartition = (pillarArray, l, r) => {
         ++j;
     }
     ++i;
-    updatePillar(pillarArray[r], array[r], 'red');
-    updatePillar(pillarArray[i], array[i], 'red');
-    let temp = array[i];
-    array[i] = array[r];
-    array[r] = temp;
-    updatePillar(pillarArray[r], array[r], 'green');
+    if (i != r) {
+        updatePillar(pillarArray[r], array[r], 'red');
+        updatePillar(pillarArray[i], array[i], 'red');
+        let temp = array[i];
+        array[i] = array[r];
+        array[r] = temp;
+    }
+    updatePillar(pillarArray[r], array[r], r - 1 == i ? 'green' : '#1a1a1d');
     updatePillar(pillarArray[i], array[i], 'green');
 
     return i;
 }
 quick = (pillarArray, l, r) => {
+
+    if (l == r) {
+        updatePillar(pillarArray[l], array[l], 'green');
+    }
     if (l < r) {
         let pi = quickPartition(pillarArray, l, r);
-        if (l == pi - 1) {
-            updatePillar(pillarArray[l], array[l], 'green');
-        }
         quick(pillarArray, l, pi - 1);
         quick(pillarArray, pi + 1, r);
     }
