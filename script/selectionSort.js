@@ -13,6 +13,8 @@ selectionSort = (pillarArray) => {
                 updatePillar(pillarArray[j], array[j], '#1a1a1d');
         }
         if (minI != i) {
+            updatePillar(pillarArray[i], array[i], 'red');
+            updatePillar(pillarArray[minI], array[minI], 'red');
             let temp = array[i];
             array[i] = array[minI];
             array[minI] = temp;
