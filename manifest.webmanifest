@@ -1,0 +1,16 @@
+{
+  "start-url":"https://riyaz-01.github.io/Sorting-Visualizer/",
+  "name":"Sorting Visualizer",
+  "description":"Sorting Visualizer",
+  "icons":[
+    {
+      "src":"logo.jpg",
+      "type":"image.jpg",
+      "sizes":"512x512"
+      
+    }
+  ],
+  "display":"standalone",
+  "theme_color":"#1a1a1d",
+  "background_color":"white"
+}

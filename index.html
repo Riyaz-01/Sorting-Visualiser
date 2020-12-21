@@ -1,136 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Soritng Visualiser</title>
-        <link rel="stylesheet" href="style.css" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap"
-            rel="stylesheet"
-        />
-    </head>
-    <body>
-        <!-- Top Section -->
-        <header>
-            <section class="setSize h">
-                <div class="sizeLabel">Set Array Size</div>
-                <div class=".changeSize">
-                    <span class="slider">
-                        <span class="limit">5</span>
-                        <input
-                            class="s"
-                            type="range"
-                            min="5"
-                            max="200"
-                            step="5"
-                            value="20"
-                        />
-                        <span class="limit">200</span>
-                    </span>
-                    <span class="sizeContainer">
-                        <span>=</span>
-                        <span class="size">20</span>
-                    </span>
-                </div>
-            </section>
-            <h1>Sorting Visualizer</h1>
-            <section class="setSpeed h">
-                <div class="speedLabel">Set Algo Speed</div>
-                <div class=".changeSpeed">
-                    <span class="slider">
-                        <span class="limit">1</span>
-                        <input
-                            class="sd"
-                            type="range"
-                            min="1"
-                            max="4"
-                            value="3"
-                        />
-                        <span class="limit">4</span>
-                    </span>
-                    <span class="speedContainer">
-                        <span>=</span>
-                        <span class="speed">3</span>
-                    </span>
-                </div>
-            </section>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Soritng Visualiser</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="manifest" href="manifest.webmanifest" />
+  </head>
+  <body>
+    <!-- Top Section -->
+    <header>
+      <section class="setSize h">
+        <div class="sizeLabel">Set Array Size</div>
+        <div class=".changeSize">
+          <span class="slider">
+            <span class="limit">5</span>
+            <input
+              class="s"
+              type="range"
+              min="5"
+              max="200"
+              step="5"
+              value="20"
+            />
+            <span class="limit">200</span>
+          </span>
+          <span class="sizeContainer">
+            <span>=</span>
+            <span class="size">20</span>
+          </span>
+        </div>
+      </section>
+      <h1>Sorting Visualizer</h1>
+      <section class="setSpeed h">
+        <div class="speedLabel">Set Algo Speed</div>
+        <div class=".changeSpeed">
+          <span class="slider">
+            <span class="limit">1</span>
+            <input class="sd" type="range" min="1" max="4" value="3" />
+            <span class="limit">4</span>
+          </span>
+          <span class="speedContainer">
+            <span>=</span>
+            <span class="speed">3</span>
+          </span>
+        </div>
+      </section>
 
-            <!-- Algo Section -->
-            <section class="algos">
-                <button class="quick selectedAlgo">Quick Sort</button>
-                <button class="merge">Merge Sort</button>
-                <button class="bubble">Bubble Sort</button>
-                <button class="selection">Selection Sort</button>
-                <button class="heap">Heap Sort</button>
-                <button class="radix">Radix Sort</button>
-            </section>
+      <!-- Algo Section -->
+      <section class="algos">
+        <button class="quick selectedAlgo">Quick Sort</button>
+        <button class="merge">Merge Sort</button>
+        <button class="bubble">Bubble Sort</button>
+        <button class="selection">Selection Sort</button>
+        <button class="heap">Heap Sort</button>
+        <button class="radix">Radix Sort</button>
+      </section>
 
-            <!-- Main Buttons -->
-            <div class="info">
-                Execution Time :
-                <span class="timer"
-                    ><span class="sec">00</span>:<span class="mili"
-                        >000</span
-                    ></span
-                >
-            </div>
-            <button class="sortBtn h">Sort</button>
-            <button class="generate h">Generate New Array</button>
-        </header>
+      <!-- Main Buttons -->
+      <div class="info">
+        Execution Time :
+        <span class="timer"
+          ><span class="sec">00</span>:<span class="mili">000</span></span
+        >
+      </div>
+      <button class="sortBtn h">Sort</button>
+      <button class="generate h">Generate New Array</button>
+    </header>
 
-        <!-- Pillars Section -->
-        <section class="pillarContainer">
-            <div class="pillars"></div>
-        </section>
+    <!-- Pillars Section -->
+    <section class="pillarContainer">
+      <div class="pillars"></div>
+    </section>
 
-        <!-- Bottom Section For Vertical View-->
-        <footer>
-            <section class="setSize v">
-                <div class="sizeLabel">Size</div>
-                <div class=".changeSize">
-                    <span class="slider">
-                        <span class="limit">5</span>
-                        <input
-                            class="s"
-                            type="range"
-                            min="5"
-                            max="70"
-                            value="20"
-                        />
-                        <span class="limit">70</span>
-                    </span>
-                </div>
-            </section>
-            <section class="setSpeed v">
-                <div class="speedLabel">Speed</div>
-                <div class=".changeSpeed">
-                    <span class="slider">
-                        <span class="limit">1</span>
-                        <input
-                            class="sd"
-                            type="range"
-                            min="1"
-                            max="4"
-                            value="3"
-                        />
-                        <span class="limit">4</span>
-                    </span>
-                </div>
-            </section>
-            <button class="sortBtn">Sort</button>
-            <button class="generate">Generate New</button>
-        </footer>
-        <!-- JavaScript Files -->
-        <script src="script/main.js"></script>
-        <script src="script/mergeSort.js"></script>
-        <script src="script/bubbleSort.js"></script>
-        <script src="script/selectionSort.js"></script>
-        <script src="script/quickSort.js"></script>
-        <script src="script/radixSort.js"></script>
-        <script src="script/heapSort.js"></script>
-        <script src="script/visualisations.js"></script>
-    </body>
+    <!-- Bottom Section For Vertical View-->
+    <footer>
+      <section class="setSize v">
+        <div class="sizeLabel">Size</div>
+        <div class=".changeSize">
+          <span class="slider">
+            <span class="limit">5</span>
+            <input class="s" type="range" min="5" max="70" value="20" />
+            <span class="limit">70</span>
+          </span>
+        </div>
+      </section>
+      <section class="setSpeed v">
+        <div class="speedLabel">Speed</div>
+        <div class=".changeSpeed">
+          <span class="slider">
+            <span class="limit">1</span>
+            <input class="sd" type="range" min="1" max="4" value="3" />
+            <span class="limit">4</span>
+          </span>
+        </div>
+      </section>
+      <button class="sortBtn">Sort</button>
+      <button class="generate">Generate New</button>
+    </footer>
+    <!-- JavaScript Files -->
+    <script src="script/main.js"></script>
+    <script src="script/mergeSort.js"></script>
+    <script src="script/bubbleSort.js"></script>
+    <script src="script/selectionSort.js"></script>
+    <script src="script/quickSort.js"></script>
+    <script src="script/radixSort.js"></script>
+    <script src="script/heapSort.js"></script>
+    <script src="script/visualisations.js"></script>
+  </body>
 </html>
